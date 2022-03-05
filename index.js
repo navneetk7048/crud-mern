@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+const FoodModel = require("./models/Food");
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -13,6 +15,17 @@ mongoose.connect(
     useNewUrlParser: true,
   }
 );
+
+app.get("/", async (req, res) => {
+  const food = new FoodModel({ foodName: "Apple", daysSinceIAte: 5 });
+
+  try {
+    await food.save();
+    res.send("Inserted data");
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
