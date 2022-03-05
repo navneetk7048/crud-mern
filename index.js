@@ -40,6 +40,23 @@ app.get("/read", async (req, res) => {
   });
 });
 
+app.put("/update", async (req, res) => {
+  const newFood = req.body.newFood;
+  const id = req.body.id;
+
+  try {
+    await FoodModel.findById(id, (err, updatedFood) => {
+      if (err) res.send(err);
+
+      updatedFood.foodName = newFood;
+      updatedFood.save();
+      res.send("updated");
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
