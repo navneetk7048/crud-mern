@@ -10,29 +10,27 @@ const App = () => {
   const [newFood, setNewFood] = useState("");
 
   useEffect(() => {
-    Axios.get("https://crud-mern-navneet.herokuapp.com/read").then(
-      (response) => {
-        setFoodList(response.data);
-      }
-    );
+    Axios.get("/read").then((response) => {
+      setFoodList(response.data);
+    });
   }, []);
 
   const addToList = () => {
-    Axios.post("https://crud-mern-navneet.herokuapp.com/insert", {
+    Axios.post("/insert", {
       foodName: foodName,
       days: days,
     });
   };
 
   const updateFood = (id) => {
-    Axios.put("https://crud-mern-navneet.herokuapp.com/update", {
+    Axios.put("/update", {
       id: id,
       newFood: newFood,
     });
   };
 
   const deleteFood = (id) => {
-    Axios.delete(`https://crud-mern-navneet.herokuapp.com/delete/${id}`);
+    Axios.delete(`/delete/${id}`);
   };
 
   return (
