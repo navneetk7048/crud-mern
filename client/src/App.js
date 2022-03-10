@@ -13,7 +13,7 @@ const App = () => {
     Axios.get("/read").then((response) => {
       setFoodList(response.data);
     });
-  }, []);
+  }, [foodList]);
 
   const addToList = () => {
     Axios.post("/insert", {
