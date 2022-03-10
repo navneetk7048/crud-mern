@@ -1,0 +1,27 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input,
+button {
+  width: 200px;
+  height: 30px;
+  font-size: 20px;
+  margin: 5px;
+}
+
+.food-item {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: max-content;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
